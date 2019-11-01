@@ -4,7 +4,9 @@ router.use(express.json());
 
 const actionModel = require("./actionRouter");
 
-router.get("/", (req, res) => {});
+// router.get("/", (req, res) => {
+//     project
+// });
 
 router.get("/:id", (req, res) => {});
 router.get("/", (req, res) => {
@@ -53,6 +55,15 @@ router.delete("/:id", validateId, (req, res) => {
 
 // custom middleware
 
-function validatePostId(req, res, next) {}
+function validateId(req, res, next) {
+    const { id } = req.params.id;
+    actionModel.get(id).then(project => {
+      if (project) {
+        next();
+      } else {
+        res.status(404).json({ error: "Project with this id does not exist" });
+      }
+    });
+  }
 
 module.exports = router;
