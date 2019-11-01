@@ -12,3 +12,15 @@ I need this code, just don't know where, perhaps should make some middleware, do
 
 Go code!
 */
+const server = require("./server");
+
+
+
+server.listen(5000, () => {
+    console.log('\n* Server Running on http://localhost:5000 *\n');
+  });
+  
+//   const port = 8000;
+// server.listen({ port }, () => {
+//   console.log(`\n API running on ${port} \n`);
+// });
